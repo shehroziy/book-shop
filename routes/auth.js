@@ -1,4 +1,6 @@
-import { Router } from "express";
+import { Router } from "express"
+import User from '../models/User.js'
+import bcrypt from "bcrypt"
 const router = Router()
 
 router.get("/login", (req, res)=>{
@@ -15,13 +17,34 @@ router.get("/register", (req, res)=>{
     })
 })
 
-router.post("/login", (req, res)=>{
-    console.log(req.body);
+router.post("/login",  async (req, res)=>{
+    const existUser = await User.findOne({email: req.body.email})
+    if(!existUser) {
+        console.log("User not found")
+        return false
+    }
+
+    const isPassEqual = await bcrypt.compare(req.body.password, existUser.password)
+    if(!isPassEqual) {
+        console.log("password wrong");
+        return false
+    }
+    console.log(existUser);
     res.redirect("/")
 })
 
-router.post("/register", (req, res)=>{
+router.post("/register", async (req, res)=>{
+    const hashedPassword = await bcrypt.hash(req.body.password, 10)
     console.log(req.body);
+    const userData ={
+        firstName: req.body.firstname,
+        lastName: req.body.lastname,
+        email: req.body.email,
+        password: hashedPassword
+    }
+
+    const user = await User.create(userData)
+    // console.log(userData);
     res.redirect("/")
 })
 

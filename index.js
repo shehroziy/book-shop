@@ -1,7 +1,7 @@
 import express from "express"
 import {create } from 'express-handlebars';
 import mongoose from "mongoose";
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv'
 import ProductsRoutes from "./routes/products.js"
 import AuthRoutes from "./routes/auth.js"
 
