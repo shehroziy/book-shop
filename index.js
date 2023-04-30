@@ -4,6 +4,8 @@ import mongoose from "mongoose";
 import * as dotenv from 'dotenv'
 import ProductsRoutes from "./routes/products.js"
 import AuthRoutes from "./routes/auth.js"
+import session from "express-session";
+import flash from "connect-flash"
 
 
 dotenv.config()
@@ -19,6 +21,8 @@ app.set('views', './views');
 app.use(express.urlencoded({extended: true}))
 app.use(express.static("public"))
 app.use(express.json())
+app.use(flash())
+app.use(session({secret: "shehroz", resave: false, saveUninitialized: false}))
 
 app.use(ProductsRoutes)
 app.use(AuthRoutes)
