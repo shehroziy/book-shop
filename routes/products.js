@@ -8,8 +8,8 @@ router.get("/", (req, res)=>{
 router.get("/add", (req, res)=>{
     res.render("add")
 })
-router.get("/notebooks", (req, res)=>{
-    res.render("notebooks")
+router.get("/products", (req, res)=>{
+    res.render("products")
 })
 
 export default router
