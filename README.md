@@ -1,6 +1,6 @@
 # Boom shop
 
-###launch the project
+### launch the project
 
 ```
 npm install
