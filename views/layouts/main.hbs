@@ -1,12 +1,17 @@
-{{>head}}
-<body>
+<html lang='en'>
+	{{!-- HEADER --}}
+	{{>head}}
 
-    {{>navbar}}
+	<body>
+		{{!-- NAVBAR --}}
+		{{>navbar}}
 
-    <div class="container">
-    {{{body}}}
-    </div>
+		{{!-- BODY --}}
+		<div class='container'>
+			{{{body}}}
+		</div>
 
-    {{>footer}}
-</body>
+		{{!-- FOOTER --}}
+		{{>footer}}
+	</body>
 </html>
